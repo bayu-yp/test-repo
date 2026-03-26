@@ -99,3 +99,13 @@ func (l *List) UpdateStatus(id int, status string) error {
 	}
 	return fmt.Errorf("todo #%d not found", id)
 }
+
+func (l *List) ListByAssignee(assignee string) []*Todo {
+	var assigned []*Todo
+	for _, t := range l.items {
+		if t.AssignedTo == assignee {
+			assigned = append(assigned, t)
+		}
+	}
+	return assigned
+}
