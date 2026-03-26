@@ -67,6 +67,7 @@ func (l *List) MarkDone(id int) error {
 			return nil
 		}
 	}
+	fmt.Println("mark pr 1")
 	return fmt.Errorf("todo #%d not found", id)
 }
 
