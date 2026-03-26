@@ -12,6 +12,7 @@ type Todo struct {
 	Done       bool      `json:"done"`
 	CreatedAt  time.Time `json:"created_at"`
 	AssignedTo string    `json:"assigned_to,omitempty"`
+	Status     string    `json:"status,omitempty"`
 }
 
 // List holds a collection of todos and provides mutation operations.
@@ -82,6 +83,16 @@ func (l *List) Assign(id int, assignee string) error {
 	for _, t := range l.items {
 		if t.ID == id {
 			t.AssignedTo = assignee
+			return nil
+		}
+	}
+	return fmt.Errorf("todo #%d not found", id)
+}
+
+func (l *List) UpdateStatus(id int, status string) error {
+	for _, t := range l.items {
+		if t.ID == id {
+			t.Status = status
 			return nil
 		}
 	}
