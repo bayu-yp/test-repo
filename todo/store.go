@@ -48,3 +48,18 @@ func (s *Store) Save(items []*Todo) error {
 	}
 	return os.WriteFile(s.path, data, 0o644)
 }
+
+func (s *Store) Add(title string) (*Todo, error) {
+	items, err := s.Load()
+	if err != nil {
+		return nil, err
+	}
+
+	list := NewList(items)
+	todo := list.Add(title)
+
+	if err := s.Save(list.Items()); err != nil {
+		return nil, err
+	}
+	return todo, nil
+}
