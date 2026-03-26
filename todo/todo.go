@@ -7,10 +7,11 @@ import (
 
 // Todo represents a single todo item.
 type Todo struct {
-	ID        int       `json:"id"`
-	Title     string    `json:"title"`
-	Done      bool      `json:"done"`
-	CreatedAt time.Time `json:"created_at"`
+	ID         int       `json:"id"`
+	Title      string    `json:"title"`
+	Done       bool      `json:"done"`
+	CreatedAt  time.Time `json:"created_at"`
+	AssignedTo string    `json:"assigned_to,omitempty"`
 }
 
 // List holds a collection of todos and provides mutation operations.
@@ -71,6 +72,16 @@ func (l *List) Delete(id int) error {
 	for i, t := range l.items {
 		if t.ID == id {
 			l.items = append(l.items[:i], l.items[i+1:]...)
+			return nil
+		}
+	}
+	return fmt.Errorf("todo #%d not found", id)
+}
+
+func (l *List) Assign(id int, assignee string) error {
+	for _, t := range l.items {
+		if t.ID == id {
+			t.AssignedTo = assignee
 			return nil
 		}
 	}
