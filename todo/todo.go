@@ -13,6 +13,7 @@ type Todo struct {
 	CreatedAt  time.Time `json:"created_at"`
 	AssignedTo string    `json:"assigned_to,omitempty"`
 	Status     string    `json:"status,omitempty"`
+	Category   string    `json:"category,omitempty"`
 }
 
 // List holds a collection of todos and provides mutation operations.
@@ -33,7 +34,7 @@ func (l *List) Items() []*Todo {
 
 // Add creates a new todo with an auto-incremented ID and appends it to the list.
 // It returns the newly created todo.
-func (l *List) Add(title string) *Todo {
+func (l *List) Add(title string, category string) *Todo {
 	nextID := 1
 	for _, t := range l.items {
 		if t.ID >= nextID {
@@ -45,6 +46,8 @@ func (l *List) Add(title string) *Todo {
 		Title:     title,
 		Done:      false,
 		CreatedAt: time.Now(),
+		Status:    "NEW",
+		Category:  category,
 	}
 	l.items = append(l.items, todo)
 	return todo
