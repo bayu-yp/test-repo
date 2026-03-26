@@ -56,7 +56,7 @@ func (s *Store) Add(title string) (*Todo, error) {
 	}
 
 	list := NewList(items)
-	todo := list.Add(title)
+	todo := list.Add(title, "General")
 
 	if err := s.Save(list.Items()); err != nil {
 		return nil, err

@@ -33,7 +33,7 @@ func main() {
 			os.Exit(1)
 		}
 		title := os.Args[2]
-		t := list.Add(title)
+		t := list.Add(title, "General")
 		if err := store.Save(list.Items()); err != nil {
 			fmt.Fprintf(os.Stderr, "error saving todos: %v\n", err)
 			os.Exit(1)
