@@ -48,6 +48,7 @@ func (l *List) Add(title string) *Todo {
 	return todo
 }
 
+// feat: improve list formatting
 // ListAll returns all todos in insertion order.
 func (l *List) ListAll() []*Todo {
 	return l.items
