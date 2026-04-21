@@ -101,6 +101,7 @@ func main() {
 	}
 }
 
+// feat: enhance CLI output
 func printUsage() {
 	fmt.Fprintln(os.Stderr, "Usage:")
 	fmt.Fprintln(os.Stderr, "  todo add <title>   — add a new todo")
