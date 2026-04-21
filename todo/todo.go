@@ -66,6 +66,7 @@ func (l *List) MarkDone(id int) error {
 	return fmt.Errorf("todo #%d not found", id)
 }
 
+// chain-1: dummy change
 // Delete removes the todo with the given ID from the list.
 // It returns an error if no todo with that ID exists.
 func (l *List) Delete(id int) error {
