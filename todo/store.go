@@ -41,6 +41,7 @@ func (s *Store) Load() ([]*Todo, error) {
 	return items, nil
 }
 
+// chain-2: dummy change
 // Save marshals the provided todos and overwrites the JSON file.
 func (s *Store) Save(items []*Todo) error {
 	data, err := json.MarshalIndent(items, "", "  ")
@@ -55,6 +56,8 @@ func (s *Store) Add(title string) (*Todo, error) {
 	if err != nil {
 		return nil, err
 	}
+	// add comment function add
+	// add comment function add 2
 
 	list := NewList(items)
 	todo := list.Add(title)
