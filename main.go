@@ -8,6 +8,7 @@ import (
 	"test-repo/todo"
 )
 
+// chain-3: dummy change
 func main() {
 	if len(os.Args) < 2 {
 		printUsage()
