@@ -22,6 +22,7 @@ func NewStore(path string) *Store {
 	return &Store{path: path}
 }
 
+// feat: optimize store loading
 // Load reads todos from the JSON file. If the file does not exist it returns
 // an empty slice — the file will be created on the first Save.
 func (s *Store) Load() ([]*Todo, error) {
