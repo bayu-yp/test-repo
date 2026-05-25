@@ -76,3 +76,12 @@ func (s *Store) DeleteTest(items []*Todo) error {
 	}
 	return os.WriteFile(s.path, data, 0o644)
 }
+
+// chain 5
+func (s *Store) PatchFunction(items []*Todo) error {
+	data, err := json.MarshalIndent(items, "", "  ")
+	if err != nil {
+		return err
+	}
+	return os.WriteFile(s.path, data, 0o644)
+}
