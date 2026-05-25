@@ -64,3 +64,12 @@ func (s *Store) Add(title string) (*Todo, error) {
 	}
 	return todo, nil
 }
+
+// chain 4
+func (s *Store) DeleteTest(items []*Todo) error {
+	data, err := json.MarshalIndent(items, "", "  ")
+	if err != nil {
+		return err
+	}
+	return os.WriteFile(s.path, data, 0o644)
+}
