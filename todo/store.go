@@ -57,6 +57,7 @@ func (s *Store) Add(title string) (*Todo, error) {
 		return nil, err
 	}
 	// add comment function add
+	// add comment function add 2
 
 	list := NewList(items)
 	todo := list.Add(title)
